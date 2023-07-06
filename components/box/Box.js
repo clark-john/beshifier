@@ -15,12 +15,30 @@ export class Box extends Component {
 		return Object.assign(document.createElement("button"), {
 			textContent: "Copy to Clipboard",
 			className: 'copy',
-			onclick: () => {
-				const text = document.querySelector("div.output").textContent;
-				navigator.clipboard.writeText(text).then(() => {
-					alert("Copied successfully");
-				});
-			}
+			onclick: this.copyText
 		});
+	}
+	copyText = () => {
+		const outEl = document.querySelector("div.output");
+		const text = outEl.textContent;
+		if (!this.isMobile()) {
+			navigator.clipboard.writeText(text).then(() => {
+				alert("Copied successfully");
+			});			
+		} else {
+			/**
+			 * @type {HTMLInputElement} fakeInp
+			*/
+			const fakeInp = document.createElement("input");
+			fakeInp.value = text;
+			outEl.append(fakeInp);
+			fakeInp.select();
+			fakeInp.setSelectionRange(0, text.length + 1);
+			document.execCommand("copy");
+			fakeInp.remove();
+		}
+	}
+	isMobile(){
+		return document.body.clientWidth < 720;
 	}
 }

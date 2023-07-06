@@ -7,7 +7,8 @@ import {
 } from './inputBoxStyles.js';
 import { 
 	copyToClipboardStyles, 
-	playAudioStyles 
+	playAudioStyles,
+	addTransitionAndClick
 } from './buttonStyles.js';
 
 /**
@@ -65,7 +66,8 @@ export function applyStyling(){
 	
 	const buttonStyles = [
 		copyToClipboardStyles,
-		playAudioStyles
+		playAudioStyles,
+		addTransitionAndClick
 	];
 
 	const inputBoxStyles = [
