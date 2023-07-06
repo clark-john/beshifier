@@ -1,4 +1,4 @@
-import { Css } from './css.js';
+import { Css } from '../css.js';
 
 /**
  * @param {Css} css

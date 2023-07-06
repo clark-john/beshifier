@@ -1,15 +1,15 @@
 import { Css } from './css.js';
-import { linkStyles } from './linkStyles.js';
+import { linkStyles } from './styles/linkStyles.js';
 import { 
 	mainBoxStyles, 
 	inputStyles,
 	outputStyles
-} from './inputBoxStyles.js';
+} from './styles/inputBoxStyles.js';
 import { 
 	copyToClipboardStyles, 
 	playAudioStyles,
 	addTransitionAndClick
-} from './buttonStyles.js';
+} from './styles/buttonStyles.js';
 
 /**
  * function to integrate css root variables

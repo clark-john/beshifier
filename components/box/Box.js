@@ -11,21 +11,25 @@ export class Box extends Component {
 		
 		this.append(this.button());
 	}
+	
 	button(){
 		return Object.assign(document.createElement("button"), {
 			textContent: "Copy to Clipboard",
 			className: 'copy',
-			onclick: this.copyText
+			ontouchstart: (evt) => {
+				evt.preventDefault();
+				this.copyText(true);
+			},
+			onmousedown: () => {
+				this.copyText(false);
+			}
 		});
 	}
-	copyText = () => {
+
+	copyText(isMobile){
 		const outEl = document.querySelector("div.output");
 		const text = outEl.textContent;
-		if (!this.isMobile()) {
-			navigator.clipboard.writeText(text).then(() => {
-				alert("Copied successfully");
-			});			
-		} else {
+		if (isMobile) {
 			/**
 			 * @type {HTMLInputElement} fakeInp
 			*/
@@ -36,9 +40,9 @@ export class Box extends Component {
 			fakeInp.setSelectionRange(0, text.length + 1);
 			document.execCommand("copy");
 			fakeInp.remove();
+		} else {
+			navigator.clipboard.writeText(text);			
 		}
-	}
-	isMobile(){
-		return document.body.clientWidth < 720;
+		alert("Copied successfully");
 	}
 }

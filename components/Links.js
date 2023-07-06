@@ -1,16 +1,42 @@
+import { months } from "../misc/months.js";
 import { Component } from "./Component.js";
 
 export class Links extends Component {
 	constructor(){
 		super("div");
-		this.setStyles({
-			alignSelf: 'end',
+		const el = document.createElement("div");
+		Object.assign(el.style, {
 			display: 'flex',
 			columnGap: '1.25rem'
 		});
-		this.append(this.tiktokIcon());
-		this.append(this.githubIcon());
+		this.setStyles({ alignSelf: 'end' });
+		el.append(this.tiktokIcon());
+		el.append(this.githubIcon());
+		this.append(el);
+		this.append(this.dateElement());
 	}
+
+	// actual date
+	dateNow(){
+		const now = new Date();
+		const month = months[now.getMonth()];
+		const day = now.getDate();
+		const year = now.getFullYear();
+		return `${month} ${day}, ${year}`;
+	}
+
+	// date element
+	dateElement(){
+		const date = document.createElement("div");
+		Object.assign(date.style, {
+			textAlign: 'center',
+			marginBlock: '10px'
+		});
+		date.textContent = this.dateNow();
+		return date;
+	}
+
+	// icons
 	githubIcon(){
 		const anchor = this.createAnchor('https://github.com/clark-john')
 		anchor.appendChild(Object.assign(document.createElement("img"), {
@@ -29,6 +55,8 @@ export class Links extends Component {
 		}));
 		return anchor;
 	}
+
+	// anchor creation
 	createAnchor(link){
 		const anchor = document.createElement("a");
 		anchor.href = link;

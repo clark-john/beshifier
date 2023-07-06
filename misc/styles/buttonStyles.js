@@ -1,4 +1,4 @@
-import { Css } from './css.js';
+import { Css } from '../css.js';
 
 const trans = 'filter 150ms ease-in-out';
 
