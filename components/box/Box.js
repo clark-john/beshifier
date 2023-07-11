@@ -16,10 +16,6 @@ export class Box extends Component {
 		return Object.assign(document.createElement("button"), {
 			textContent: "Copy to Clipboard",
 			className: 'copy',
-			ontouchstart: (evt) => {
-				evt.preventDefault();
-				this.copyText();
-			},
 			onmousedown: () => {
 				this.copyText();
 			}
