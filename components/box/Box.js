@@ -18,31 +18,27 @@ export class Box extends Component {
 			className: 'copy',
 			ontouchstart: (evt) => {
 				evt.preventDefault();
-				this.copyText(true);
+				this.copyText();
 			},
 			onmousedown: () => {
-				this.copyText(false);
+				this.copyText();
 			}
 		});
 	}
 
-	copyText(isMobile){
+	copyText(){
 		const outEl = document.querySelector("div.output");
 		const text = outEl.textContent;
-		if (isMobile) {
-			/**
-			 * @type {HTMLInputElement} fakeInp
-			*/
-			const fakeInp = document.createElement("input");
-			fakeInp.value = text;
-			outEl.append(fakeInp);
-			fakeInp.select();
-			fakeInp.setSelectionRange(0, text.length + 1);
-			document.execCommand("copy");
-			fakeInp.remove();
-		} else {
-			navigator.clipboard.writeText(text);			
-		}
+		/**
+		 * @type {HTMLInputElement} fakeInp
+		*/
+		const fakeInp = document.createElement("input");
+		fakeInp.value = text;
+		outEl.append(fakeInp);
+		fakeInp.select();
+		fakeInp.setSelectionRange(0, text.length + 1);
+		document.execCommand("copy");
+		fakeInp.remove();
 		alert("Copied successfully");
 	}
 }
