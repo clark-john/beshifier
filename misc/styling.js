@@ -10,6 +10,7 @@ import {
 	playAudioStyles,
 	addTransitionAndClick
 } from './styles/buttonStyles.js';
+import { insertFont } from './insertFont.js';
 
 /**
  * function to integrate css root variables
@@ -61,7 +62,7 @@ function titleStyles(css){
 	});
 };
 
-export function applyStyling(){
+export async function applyStyling(){ 
 	const css = new Css();
 	
 	const buttonStyles = [
@@ -85,9 +86,10 @@ export function applyStyling(){
 		linkStyles
 	];
 
-	for (const func of styles) {
-		func.call(null, css);
-	}
+	await insertFont(css);
+
+	for (const func of styles)
+		func(css);
 
 	return css.getStylesheet();
 };

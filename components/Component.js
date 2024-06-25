@@ -2,7 +2,6 @@
  * class for components creation
 */
 export class Component {
-	#element;
 	constructor(tag){
 		/**
 		 * @type {HTMLElement}

@@ -12,9 +12,9 @@ export class Title extends Component {
 		desc.classList.add("desc");
 
 		div.textContent = "Beshifier 🤸🏻‍♂️";
-		desc.textContent = 'Convert normal text into "beshy"-ied text.'
+		desc.textContent = 'Convert normal text into "beshy"-ied text.';
 
-		this.append(div)
-		this.append(desc)
+		this.append(div);
+		this.append(desc);
 	}
 }

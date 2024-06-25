@@ -1,4 +1,3 @@
-import { insertFont } from "./insertFont.js";
 
 /**
  * @param {HTMLHeadElement} head
@@ -10,15 +9,12 @@ export function createMetadata(head){
 		description: "Convert normal text to \"beshy\"-ied text"
 	};
 
-	for (const x of Object.keys(metadata)) {
+	for (const [key, content] of Object.entries(metadata)) {
 		const meta = document.createElement("meta");
-		const content = metadata[x];
-		if (x === 'charset') {
-			meta.setAttribute(x, content);
-		} else {
-			meta.setAttribute("name", x);
-			meta.setAttribute("content", content);
-		}
+		if (key === 'charset') meta.setAttribute(key, content);
+		else
+			for (const [k, v] of [["name", key], ["content", content]])
+				meta.setAttribute(k, v);
 		head.append(meta);
 	}
 
@@ -28,7 +24,4 @@ export function createMetadata(head){
 	icon.href = "favicon.svg";
 
 	head.append(icon);
-
-	// font
-	insertFont(head);
 }

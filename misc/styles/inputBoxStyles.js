@@ -1,11 +1,12 @@
-import { Css } from '../css.js';
+const radius = '6px';
+
+/**
+ * @typedef {import("../css.js").Css} Css
+*/
 
 /**
  * @param {Css} css
 */
-
-const radius = '6px';
-
 export function mainBoxStyles(css){
 	css.applyRule(".box", {
 		borderRadius: "10px",

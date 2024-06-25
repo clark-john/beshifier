@@ -22,7 +22,6 @@ export class PlayAudio extends Component {
 			}
 		});
 	}
-	onClick = () => {
+	onClick = () =>
 		this.audio.play();
-	}
 }

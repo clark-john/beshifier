@@ -29,14 +29,10 @@ export class App extends Component {
 		const height = document.body.clientHeight;
 		
 		// width changes
-		if (width < 600) {
+		if (width < 600)
 			document.body.style.marginInline = "20px";
-		}
+
 		// height changes
-		if (height < 790) {
-			this.playAudio.style.marginBlock = '1.6rem';
-		} else {
-			this.playAudio.style.marginBlock = '2.5rem';
-		}
+		this.playAudio.style.marginBlock = height < 790 ? '1.6rem' : '2.5rem';
 	}
 }

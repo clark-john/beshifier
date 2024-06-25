@@ -13,12 +13,10 @@ export class Textarea extends Component {
 	*/
 	onInput(ev){
 		const text = ev.target.value;
-		window.dispatchEvent(
+		dispatchEvent(
 			new CustomEvent(
 				"convert", { 
-					detail: { 
-						text 
-					}
+					detail: { text }
 				}
 			)
 		);
