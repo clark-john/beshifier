@@ -8,6 +8,7 @@ export class Textarea extends Component {
 		this.setAttribute("rows", 23)
 		this.addEventListener("input", this.onInput);
 	}
+	
 	/**
 	 * @param {InputEvent} ev
 	*/

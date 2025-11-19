@@ -12,16 +12,18 @@ export class PlayAudio extends Component {
 		*/
 		this.audio = Object.assign(document.createElement("audio"), {
 			src: 'beshy.wav',
-			onplay: () => {
-				this.element.style.filter = "brightness(.5)";
-				this.element.textContent = "Playing";
-			},
-			onpause: () => {
-				this.element.style.filter = "brightness(1)";
-				this.element.textContent = "Play Audio";
-			}
+			onplay: () => this.alterButton("Playing", ""),
+			onpause: () => this.alterButton("Resume Audio"),
+			onended: () => this.alterButton("Play Audio")
 		});
 	}
-	onClick = () =>
-		this.audio.play();
+
+	alterButton(text, lightness = 'light') {
+		this.element.style.filter = "brightness(" + (lightness === 'light' ? '1' : '.5') + ")";
+		this.element.textContent = text;
+	}
+
+	onClick = () => {
+		this.audio[this.element.textContent !== 'Playing' ? 'play' : 'pause']();
+	}
 }

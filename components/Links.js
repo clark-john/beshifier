@@ -9,7 +9,11 @@ export class Links extends Component {
 			display: 'flex',
 			columnGap: '1.25rem'
 		});
-		this.setStyles({ alignSelf: 'end' });
+		this.setStyles({ 
+			alignSelf: 'end', 
+			display: 'grid',
+			justifyItems: 'center'
+		});
 		el.append(this.tiktokIcon());
 		el.append(this.githubIcon());
 		this.append(el);
@@ -46,6 +50,7 @@ export class Links extends Component {
 		}));
 		return anchor;		
 	}
+
 	tiktokIcon(){
 		const anchor = this.createAnchor('https://tiktok.com/@httpistyep');
 		anchor.appendChild(Object.assign(document.createElement("img"), {
